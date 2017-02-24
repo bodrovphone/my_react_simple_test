@@ -9,11 +9,18 @@ class Layout extends Component {
         this.state = {
             tasks: []
         }
+    this.updateTasks = this.updateTasks.bind(this);
     }
+
+    updateTasks(task) {
+        this.setState({...this.state.tasks.push(task)});
+    }
+
     render() {
+        console.log(this.state.tasks);
         return (
             <div>
-                <AddTask />
+                <AddTask newTask={this.updateTasks} />
             </div>
             );
     }
