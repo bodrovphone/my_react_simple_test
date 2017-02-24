@@ -1,0 +1,15 @@
+body {
+    background-color: #f5f5f5;
+}
+#app {
+    width: 380px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+    margin: 100px auto;
+}
+
+.add-task {
+    padding: 16px 16px 16px 40px;
+    font-size: 24px;
+    margin: 20px 40px;
+}
