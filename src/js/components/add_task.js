@@ -9,6 +9,7 @@ export default class AddTask extends Component {
     handleKeyPress(e) {
         if (e.key === 'Enter') {
       this.props.newTask(e.target.value);
+      e.target.value = '';
     }
 
     }
