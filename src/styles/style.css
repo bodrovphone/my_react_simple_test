@@ -14,11 +14,21 @@ body {
     font-size: 24px;
     margin: 20px 0;
     background: rgba(0, 0, 0, 0.003);
+    width: 95%;
 }
 
 .flex-item {
-  margin: auto;
+  margin: auto 0px;
 }
+
+.checkbox,.select-all {
+  margin: auto 15px;
+}
+
+
+
+
+
 
 input[type="text"].add-task::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: rgb(230, 230, 230);
@@ -68,11 +78,6 @@ button {
   font-size: 24px;
 }
 
-.row input {
-  margin-right: 10px;
-}
-
-
 .task-list:before {
     content: '';
     position: absolute;
@@ -82,3 +87,25 @@ button {
     height: 50px;
     overflow: hidden;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2);
+}
+.single-task {
+  padding: 16px 0;
+}
+
+
+
+input[type=checkbox]:not(old) {
+  opacity : 0;
+}
+
+input[type=checkbox]:not(old) + label {
+  display: inline-block;
+  margin-left: -28px;
+  padding-left: 28px;
+  background: url('checks.png') no-repeat 0 0;
+  line-height: 24px;
+}
+
+input[type=checkbox]:not(old):checked + label{
+  background-position : 0 -24px;
+}
