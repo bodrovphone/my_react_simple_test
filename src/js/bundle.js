@@ -17,14 +17,7 @@ class Layout extends Component {
         this.setState({...this.state.tasks.push({name: task, done: 'false'})});
     }
 
-    // componentWillMount() {
-    //     for (let i = 0; i < this.state.tasks.length; i++) {
-
-    //     }
-    // }
-
     render() {
-        console.log(this.state.tasks);
         return (
             <div>
                 <AddTask newTask={this.updateTasks} />

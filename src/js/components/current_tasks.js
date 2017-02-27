@@ -8,7 +8,7 @@ export default class CurrentTasks extends Component {
     const allTasks = this.props.allTasks;
     if (!allTasks.length) return null;
         return (
-            <div>
+            <div className="container task-list">
                 {allTasks.map((task,index) => {
                     return <SingleTask key={index} name={task.name}>{task.name}</SingleTask>;
                 })}

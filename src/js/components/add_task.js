@@ -14,6 +14,10 @@ export default class AddTask extends Component {
 
     }
     render() {
-        return <input className="add-task" type="text" placeholder="What needs to be done?" onKeyPress={this.handleKeyPress} />
+        return (<div className="container-row">
+                    <input className="flex-item" type="checkbox"/>
+                    <input className="add-task flex-item" type="text" placeholder="What needs to be done?" onKeyPress={this.handleKeyPress} />
+                </div>
+                );
     }
 }
