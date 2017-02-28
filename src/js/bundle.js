@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import update from 'immutability-helper';
 
 import AddTask from './components/add_task';
 import CurrentTasks from './components/current_tasks';
@@ -10,18 +11,23 @@ class Layout extends Component {
         this.state = {
             tasks: []
         }
+    this.addTask = this.addTask.bind(this);
     this.updateTasks = this.updateTasks.bind(this);
     }
 
-    updateTasks(task) {
+    addTask(task) {
         this.setState({...this.state.tasks.push({name: task, done: 'false'})});
+    }
+
+    updateTasks(event) {
+
     }
 
     render() {
         return (
             <div>
-                <AddTask newTask={this.updateTasks} />
-                <CurrentTasks allTasks={this.state.tasks}/>
+                <AddTask newTask={this.addTask} />
+                <CurrentTasks allTasks={this.state.tasks} updateTasks={this.updateTasks} />
             </div>
             );
     }
