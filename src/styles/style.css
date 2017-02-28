@@ -78,11 +78,15 @@ button {
   font-size: 24px;
 }
 
-.task-list:before {
+footer {
+  height: 40px;
+}
+
+footer:before {
     content: '';
     position: absolute;
     right: 0;
-    bottom: 0;
+    bottom: 5px;
     left: 0;
     height: 50px;
     overflow: hidden;
@@ -92,20 +96,19 @@ button {
   padding: 16px 0;
 }
 
-
-
-input[type=checkbox]:not(old) {
-  opacity : 0;
+label {
+  position: relative;
+  bottom: 12px;
+}
+input[type=checkbox] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+input[type=checkbox]:after {
+  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#ededed" stroke-width="3"/></svg>');
 }
 
-input[type=checkbox]:not(old) + label {
-  display: inline-block;
-  margin-left: -28px;
-  padding-left: 28px;
-  background: url('checks.png') no-repeat 0 0;
-  line-height: 24px;
-}
-
-input[type=checkbox]:not(old):checked + label{
-  background-position : 0 -24px;
+input[type=checkbox]:checked:after {
+  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
 }

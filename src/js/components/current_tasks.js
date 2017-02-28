@@ -12,6 +12,7 @@ export default class CurrentTasks extends Component {
                 {allTasks.map((task,index) => {
                     return <SingleTask key={index} name={task.name}>{task.name}</SingleTask>;
                 })}
+                <footer></footer>
             </div>
         );
  }   
