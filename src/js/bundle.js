@@ -16,11 +16,14 @@ class Layout extends Component {
     }
 
     addTask(task) {
-        this.setState({...this.state.tasks.push({name: task, done: 'false'})});
+        this.setState({...this.state.tasks.push({name: task, done: false})});
     }
 
     updateTasks(event) {
-
+        const id = Number(event.target.id);
+        const state = this.state;
+        const newData  = update(state.tasks, {[id]: {done: {$set: !state.tasks[id].done}}});
+        this.setState( {tasks: newData} );
     }
 
     render() {

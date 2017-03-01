@@ -8,14 +8,6 @@ export default class CurrentTasks extends Component {
      this.toggleTask = this.toggleTask.bind(this);
  }
  toggleTask(event) {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-
-    console.log(target, value);
-    // this.setState({
-    //   [name]: value
-    // });
     this.props.updateTasks(event);
  }
  render () {
