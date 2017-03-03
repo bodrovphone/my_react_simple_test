@@ -13,6 +13,7 @@ class Layout extends Component {
         }
     this.addTask = this.addTask.bind(this);
     this.updateTasks = this.updateTasks.bind(this);
+    this.toggleAll = this.toggleAll.bind(this);
     }
 
     addTask(task) {
@@ -26,10 +27,16 @@ class Layout extends Component {
         this.setState( {tasks: newData} );
     }
 
+    toggleAll(event) {
+        const tasks = this.state.tasks;
+        const toggle = event.target.checked ? true : false;
+        const newData = tasks.map(function(task) {  task.done = toggle; return task; });
+        this.setState( {...newData} );
+    }
     render() {
         return (
             <div>
-                <AddTask newTask={this.addTask} />
+                <AddTask newTask={this.addTask} toggleAll={this.toggleAll} />
                 <CurrentTasks allTasks={this.state.tasks} updateTasks={this.updateTasks} />
             </div>
             );

@@ -118,3 +118,21 @@ input[type=checkbox]:checked:after {
   text-decoration: line-through;
   color: #d9d9d9;
 }
+.delete, .delete-hover {
+    float: right;
+    width: 100px;
+    height: 40px;
+    margin: auto 0;
+    font-size: 30px;
+    background-color: #fff;
+    color: #fff;
+    margin-bottom: 11px;
+    transition: color 0.2s ease-out;
+}
+.delete-hover {
+  color: #af5b5e;
+}
+
+.delete::after{
+  content: "×";
+  }
