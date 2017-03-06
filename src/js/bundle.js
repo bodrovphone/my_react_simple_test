@@ -14,6 +14,7 @@ class Layout extends Component {
     this.addTask = this.addTask.bind(this);
     this.updateTasks = this.updateTasks.bind(this);
     this.toggleAll = this.toggleAll.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
     }
 
     addTask(task) {
@@ -33,11 +34,21 @@ class Layout extends Component {
         const newData = tasks.map(function(task) {  task.done = toggle; return task; });
         this.setState( {...newData} );
     }
+
+    deleteTask(event) {
+        const index = +event.target.dataset.index;
+        const state = this.state.tasks;
+        state.length ? state.splice(index, 1) : [];
+        this.setState( {tasks: state} );
+    }
+
     render() {
         return (
             <div>
                 <AddTask newTask={this.addTask} toggleAll={this.toggleAll} />
-                <CurrentTasks allTasks={this.state.tasks} updateTasks={this.updateTasks} />
+                <CurrentTasks allTasks={this.state.tasks} updateTasks={this.updateTasks} 
+                              deleteTask={this.deleteTask}
+                />
             </div>
             );
     }

@@ -79,8 +79,13 @@ button {
   font-size: 24px;
 }
 
+.single-task:last-of-type {
+  border-bottom: 1px solid #e6e6e6;
+}
+
 footer {
   height: 40px;
+  padding: 20px;
 }
 
 footer:before {
