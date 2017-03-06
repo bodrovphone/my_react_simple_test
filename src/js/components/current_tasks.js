@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import SingleTask from './single_task';
+import Footer from './footer';
 
 export default class CurrentTasks extends Component {
     constructor(props) {
@@ -20,6 +21,7 @@ export default class CurrentTasks extends Component {
         if (!allTasks.length) return null;
 
             return (
+                <div>
                 <div className="container task-list">
                     {allTasks.map((task,index) => {
                         return <SingleTask isDone={task.done} 
@@ -29,13 +31,10 @@ export default class CurrentTasks extends Component {
                                            deleteTask={this.props.deleteTask}
                                            >{task.name}</SingleTask>;
                     })}
-                    <footer className="container-row">
-                        <div className="flex-item items-left">{activeTasks.length} items left</div>
-                        <div className="flex-item">All</div>
-                        <div className="flex-item">Active</div>
-                        <div className="flex-item">Completed</div>
-                        <div className="flex-item">Clear Completed</div>
-                    </footer>
+                    
+                </div>
+                <Footer activeTasks={activeTasks}></Footer>
+                <div className="visual"></div>
                 </div>
             );
     }

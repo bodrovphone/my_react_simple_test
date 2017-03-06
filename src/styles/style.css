@@ -88,7 +88,11 @@ footer {
   padding: 20px;
 }
 
-footer:before {
+.visual {
+  height: 28px;
+}
+
+.visual:before {
     content: '';
     position: absolute;
     right: 0;
@@ -147,3 +151,7 @@ input[type=checkbox]:checked:after {
 .delete::after{
   content: "×";
   }
+
+footer .flex-item {
+  margin: auto;
+}
