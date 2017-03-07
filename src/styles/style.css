@@ -2,7 +2,6 @@ body {
     background-color: #f5f5f5;
 }
 #app {
-    width: 42%;
     max-width: 640px;
     background-color: #fff;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
@@ -154,4 +153,19 @@ input[type=checkbox]:checked:after {
 
 footer .flex-item {
   margin: auto;
+}
+
+footer .flex-item {
+  font-size: 14px;
+  font-weight: normal;
+  background-color: #fff;
+}
+
+button.flex-item {
+  margin: 0 10px;
+}
+
+button.enabled {
+  border: 2px solid #c9b9e1;
+  border-radius: 6px;
 }

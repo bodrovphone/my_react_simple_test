@@ -9,12 +9,14 @@ class Layout extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            tasks: []
+            tasks: [],
+            activeFilter: "all"
         }
     this.addTask = this.addTask.bind(this);
     this.updateTasks = this.updateTasks.bind(this);
     this.toggleAll = this.toggleAll.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
+    this.enableFilter = this.enableFilter.bind(this);
     }
 
     addTask(task) {
@@ -42,12 +44,18 @@ class Layout extends Component {
         this.setState( {tasks: state} );
     }
 
+    enableFilter(event) {
+        this.setState( {activeFilter: event.target.id} );
+    }
+
     render() {
         return (
             <div>
                 <AddTask newTask={this.addTask} toggleAll={this.toggleAll} />
                 <CurrentTasks allTasks={this.state.tasks} updateTasks={this.updateTasks} 
                               deleteTask={this.deleteTask}
+                              enableFilter={this.enableFilter}
+                              activeFilter={this.state.activeFilter}
                 />
             </div>
             );
