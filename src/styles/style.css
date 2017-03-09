@@ -169,3 +169,13 @@ button.enabled {
   border: 2px solid #c9b9e1;
   border-radius: 6px;
 }
+
+button.filter:hover {
+  cursor: pointer;
+  outline: 1px solid #dfd8e9;
+}
+
+.clear-items:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

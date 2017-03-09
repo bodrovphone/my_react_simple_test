@@ -57,13 +57,14 @@ export default class CurrentTasks extends Component {
         const activeTasks = allTasks.filter(task => !task.done);
 
         if (!allTasks.length) return null;
-            console.log(allTasks.filter(task => !task.done));
             return (
                 <div>
                     <div className="container task-list">
                         {this.conditionalRender(allTasks,this.props.activeFilter)}
                     </div>
-                    <Footer activeTasks={activeTasks} activeFilter={this.props.activeFilter} enableFilter={this.props.enableFilter}></Footer>
+                    <Footer activeTasks={activeTasks} activeFilter={this.props.activeFilter} enableFilter={this.props.enableFilter}
+                            clearCompleted={this.props.clearCompleted}
+                    ></Footer>
                     <div className="visual"></div>
                 </div>
             );

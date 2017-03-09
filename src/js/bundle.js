@@ -17,6 +17,7 @@ class Layout extends Component {
     this.toggleAll = this.toggleAll.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
     this.enableFilter = this.enableFilter.bind(this);
+    this.clearCompleted = this.clearCompleted.bind(this);
     }
 
     addTask(task) {
@@ -48,6 +49,12 @@ class Layout extends Component {
         this.setState( {activeFilter: event.target.id} );
     }
 
+    clearCompleted() {
+        const tasks = this.state.tasks;
+        const newData = tasks.filter(task => !task.done);
+        this.setState( {tasks: newData} );
+    }
+
     render() {
         return (
             <div>
@@ -56,6 +63,7 @@ class Layout extends Component {
                               deleteTask={this.deleteTask}
                               enableFilter={this.enableFilter}
                               activeFilter={this.state.activeFilter}
+                              clearCompleted={this.clearCompleted}
                 />
             </div>
             );
