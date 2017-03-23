@@ -18,20 +18,22 @@ class Layout extends Component {
     this.deleteTask = this.deleteTask.bind(this);
     this.enableFilter = this.enableFilter.bind(this);
     this.clearCompleted = this.clearCompleted.bind(this);
+    this.EditTask = this.EditTask.bind(this);
     }
 
     addTask(task) {
-        this.setState({...this.state.tasks.push({name: task, done: false})});
+        this.setState({...this.state.tasks.push({name: task, done: false, edit: false})});
     }
 
     updateTasks(event) {
         const id = Number(event.target.id);
         const state = this.state;
         const newData  = update(state.tasks, {[id]: {done: {$set: !state.tasks[id].done}}});
-        this.setState( {tasks: newData} );
+        this.setState( {tasks: newData} ); 
     }
 
     toggleAll(event) {
+        if (!this.state.tasks.length) return;
         const tasks = this.state.tasks;
         const toggle = event.target.checked ? true : false;
         const newData = tasks.map(function(task) {  task.done = toggle; return task; });
@@ -55,7 +57,17 @@ class Layout extends Component {
         this.setState( {tasks: newData} );
     }
 
+    EditTask(event) {
+        const id = event.currentTarget.dataset.index;
+        const state = this.state;
+        const newData  = update(state.tasks, {[id]: {edit: {$set: !state.tasks[id].edit}}});
+        const differentData = update(newData, {[id]: {name: {$set: event.target.value}}});
+        this.setState( {tasks: differentData} );
+        // console.log(this.state.tasks[id]);
+        }
+
     render() {
+        // console.log(this.state.tasks);
         return (
             <div>
                 <AddTask newTask={this.addTask} toggleAll={this.toggleAll} />
@@ -64,6 +76,7 @@ class Layout extends Component {
                               enableFilter={this.enableFilter}
                               activeFilter={this.state.activeFilter}
                               clearCompleted={this.clearCompleted}
+                              EditTask={this.EditTask}
                 />
             </div>
             );

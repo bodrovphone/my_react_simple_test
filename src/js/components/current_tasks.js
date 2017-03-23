@@ -8,7 +8,6 @@ export default class CurrentTasks extends Component {
          super(props);
          this.toggleTask = this.toggleTask.bind(this);
          this.conditionalRender = this.conditionalRender.bind(this);
-         const activeTasks = [];
     }
 
     toggleTask(event) {
@@ -24,6 +23,8 @@ export default class CurrentTasks extends Component {
                                            name={task.name}
                                            handleInputChange={this.toggleTask}
                                            deleteTask={this.props.deleteTask}
+                                           EditTask={this.props.EditTask}
+                                           edit={task.edit}
                                            >{task.name}</SingleTask>;
                     }
                 ));
@@ -35,6 +36,8 @@ export default class CurrentTasks extends Component {
                                            name={task.name}
                                            handleInputChange={this.toggleTask}
                                            deleteTask={this.props.deleteTask}
+                                           EditTask={this.props.EditTask}
+                                           edit={task.edit}
                                            >{task.name}</SingleTask>;
                     }
                 ));
@@ -46,6 +49,8 @@ export default class CurrentTasks extends Component {
                                            name={task.name}
                                            handleInputChange={this.toggleTask}
                                            deleteTask={this.props.deleteTask}
+                                           EditTask={this.props.EditTask}
+                                           edit={task.edit}
                                            >{task.name}</SingleTask>;
                     }
                 ));
