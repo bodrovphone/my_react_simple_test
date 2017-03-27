@@ -59,11 +59,11 @@ class Layout extends Component {
 
     EditTask(event) {
         const id = event.currentTarget.dataset.index;
+        const value = (event.key === 'Enter' || event.type === 'blur') ? event.target.value : event.currentTarget.childNodes[1].innerHTML;
         const state = this.state;
         const newData  = update(state.tasks, {[id]: {edit: {$set: !state.tasks[id].edit}}});
-        const differentData = update(newData, {[id]: {name: {$set: event.target.value}}});
+        const differentData = update(newData, {[id]: {name: {$set: value}}});
         this.setState( {tasks: differentData} );
-        // console.log(this.state.tasks[id]);
         }
 
     render() {

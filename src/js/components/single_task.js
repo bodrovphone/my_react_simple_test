@@ -6,7 +6,6 @@ export default class SingleTask extends Component {
         this.handleOnMouseOver = this.handleOnMouseOver.bind(this);
         this.handleOffMouseOver = this.handleOffMouseOver.bind(this);
         this.isEditable = this.isEditable.bind(this);
-        this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
     handleOnMouseOver(event) {
@@ -16,18 +15,14 @@ export default class SingleTask extends Component {
     handleOffMouseOver(event) {
         event.currentTarget.lastChild.className = "delete";
     }
-    handleKeyPress(e) {
-      if (e.key === 'Enter' || e.type == 'blur') {
-      this.props.EditTask(e);
-    } 
-}
+
     isEditable(edit) {
         if (edit) {
-            return <input autoFocus className="editable row single-task" data-index={this.props.index} type="text" defaultValue={this.props.name} onKeyPress={this.handleKeyPress} onBlur={this.handleKeyPress}/>
+            return <input autoFocus className="editable row single-task" data-index={this.props.index} type="text" defaultValue={this.props.name} onKeyPress={this.props.EditTask} onBlur={this.props.EditTask}/>
         } else {
             return (
                 <div onMouseEnter={this.handleOnMouseOver} onMouseLeave={this.handleOffMouseOver} className="row single-task" onDoubleClick={this.props.EditTask} data-index={this.props.index}>
-                    <input className="checkbox" type="checkbox" id={this.props.index} name={this.props.name} onChange={this.props.handleInputChange} checked={this.props.isDone} />
+                    <input className="checkbox" type="checkbox" id={this.props.index} name={this.props.name} onChange={this.props.updateTasks} checked={this.props.isDone} />
                     <label className={this.props.isDone ? 'task-is-done' : ''}>{this.props.name}</label>
                     <button className="delete" data-index={this.props.index} onClick={this.props.deleteTask}></button>
                 </div>

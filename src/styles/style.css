@@ -80,6 +80,7 @@ button {
 
 .single-task:last-of-type {
   border-bottom: 1px solid #e6e6e6;
+  border-top: 1px solid #e6e6e6;
 }
 
 footer {
@@ -105,7 +106,15 @@ footer {
   padding: 16px 0;
 }
 
-label, .editable {
+.editable {
+  padding: 18px 0  18px 60px;
+  font-size: 24px;
+  color: #e47272;
+  border-top: 1px solid #e6e6e6;
+  border-bottom: none;
+}
+
+label {
   position: relative;
   bottom: 12px;
   word-break: break-all;
