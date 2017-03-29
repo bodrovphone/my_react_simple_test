@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import update from 'immutability-helper';
 
+
 import AddTask from './components/add_task';
 import CurrentTasks from './components/current_tasks';
+import loadState from './components/load_state';
+import saveState from './components/save_state'
 
 class Layout extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            tasks: [],
-            activeFilter: "all"
-        }
+    this.state = loadState || {tasks: [],activeFilter: "all"};
     this.addTask = this.addTask.bind(this);
     this.updateTasks = this.updateTasks.bind(this);
     this.toggleAll = this.toggleAll.bind(this);
@@ -21,6 +21,13 @@ class Layout extends Component {
     this.EditTask = this.EditTask.bind(this);
     }
 
+    componentDidMount() {
+       // const obodrovToDos = this.state;
+       console.log('main layout component mounted', this.state);
+    }
+    componentDidUpdate() {
+        saveState(this.state);
+    }
     addTask(task) {
         this.setState({...this.state.tasks.push({name: task, done: false, edit: false})});
     }
@@ -58,16 +65,17 @@ class Layout extends Component {
     }
 
     EditTask(event) {
+        if (event.type === 'keypress' && event.key !== 'Enter') return;
         const id = event.currentTarget.dataset.index;
         const value = (event.key === 'Enter' || event.type === 'blur') ? event.target.value : event.currentTarget.childNodes[1].innerHTML;
         const state = this.state;
         const newData  = update(state.tasks, {[id]: {edit: {$set: !state.tasks[id].edit}}});
         const differentData = update(newData, {[id]: {name: {$set: value}}});
         this.setState( {tasks: differentData} );
+
         }
 
     render() {
-        // console.log(this.state.tasks);
         return (
             <div>
                 <AddTask newTask={this.addTask} toggleAll={this.toggleAll} />
