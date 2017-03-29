@@ -5,13 +5,12 @@ import update from 'immutability-helper';
 
 import AddTask from './components/add_task';
 import CurrentTasks from './components/current_tasks';
-import loadState from './components/load_state';
 import saveState from './components/save_state'
 
 class Layout extends Component {
     constructor(props) {
         super(props);
-    this.state = loadState || {tasks: [],activeFilter: "all"};
+    this.state = JSON.parse(localStorage.getItem('obodrovToDos')) || {tasks: [],activeFilter: "all"};
     this.addTask = this.addTask.bind(this);
     this.updateTasks = this.updateTasks.bind(this);
     this.toggleAll = this.toggleAll.bind(this);
@@ -21,13 +20,13 @@ class Layout extends Component {
     this.EditTask = this.EditTask.bind(this);
     }
 
-    componentDidMount() {
-       // const obodrovToDos = this.state;
-       console.log('main layout component mounted', this.state);
-    }
+    // componentDidMount() {
+    //    // const obodrovToDos = this.state;
+    //    this.setState(JSON.parse(localStorage.getItem('obodrovToDos')));
+    // }
     componentDidUpdate() {
-        saveState(this.state);
-    }
+            localStorage.obodrovToDos = JSON.stringify(this.state);
+    }   
     addTask(task) {
         this.setState({...this.state.tasks.push({name: task, done: false, edit: false})});
     }
